@@ -84,7 +84,7 @@ class Map{
     }
     int count = nodes.size();
     for(int i = 0; i < count; i++){
-      nodes.get(i).show();
+      nodes.get(i).show(i);
     }
   }
 

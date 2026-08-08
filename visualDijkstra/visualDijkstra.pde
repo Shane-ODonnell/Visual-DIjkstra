@@ -8,6 +8,7 @@ void setup(){
   size(500,500);
   background(200);
   map = new Map();
+  textSize(30);
 }
 
 void draw(){
