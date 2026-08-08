@@ -12,9 +12,32 @@ class Map{
   
   void addNode(int x, int y){
     int n = getNode();
-
     if( n != -1){
       nodes.remove(n);
+      //remove any lines connected to this node
+      for(int i = 0; i < lines.size(); i++){
+        PVector curr = lines.get(i);
+        int node1 = floor(curr.x);
+        int node2 = floor(curr.y);
+
+        if(node1 == n || node2 == n){
+          lines.remove(i);
+          println("removed pair: " + node1 + ", " + node2);
+          i--;
+        }
+      }
+      for(int i = 0; i < lines.size(); i++){
+        PVector curr = lines.get(i);
+        int node1 = floor(curr.x);
+        int node2 = floor(curr.y);
+        if( node1 > n)
+          node1--;
+        if(node2 > n){
+          node2--;
+        }
+        PVector next = new PVector(node1,node2);
+        lines.set(i, next);
+      }
     }
     else{
       nodes.add(new Node(x,y));
@@ -48,8 +71,12 @@ class Map{
       //draw a line between nodes
       PVector curr = lines.get(i);
 
-      Node n1 = nodes.get(floor(curr.x));
-      Node n2 = nodes.get(floor(curr.y));
+      int node1 = floor(curr.x);
+      int node2 = floor(curr.y);
+
+      Node n1 = nodes.get(node1);
+      Node n2 = nodes.get(node2);
+      
       fill(0);
       stroke(50);
       line(n1.x, n1.y, n2.x, n2.y);

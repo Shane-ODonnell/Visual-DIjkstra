@@ -26,6 +26,7 @@ void mouseClicked() {
 void keyPressed(){
   if( key == 'l' || key == 'L' ){
     lineMode = ! lineMode;
+    map.currL = -1;
     println("line mode: " + lineMode);
   }
 }
