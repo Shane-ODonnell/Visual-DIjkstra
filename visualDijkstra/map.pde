@@ -43,10 +43,6 @@ class Map{
   }
 
   void show(){
-    int count = nodes.size();
-    for(int i = 0; i < count; i++){
-      nodes.get(i).show();
-    }
     int countL = lines.size();
     for(int i = 0; i < countL; i++){
       //draw a line between nodes
@@ -58,6 +54,10 @@ class Map{
       stroke(50);
       line(n1.x, n1.y, n2.x, n2.y);
       
+    }
+    int count = nodes.size();
+    for(int i = 0; i < count; i++){
+      nodes.get(i).show();
     }
   }
 
