@@ -17,13 +17,15 @@ void draw(){
 
 void mouseClicked() {
   if(lineMode){
-    //map.addLine();
+    map.addLine();
   }
   else
     map.addNode(mouseX,mouseY);
 }
 
 void keyPressed(){
-  if( key == 'l' || key == 'L' )
+  if( key == 'l' || key == 'L' ){
     lineMode = ! lineMode;
+    println("line mode: " + lineMode);
+  }
 }

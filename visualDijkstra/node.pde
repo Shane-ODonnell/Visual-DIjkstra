@@ -1,10 +1,12 @@
 
 class Node{
   int x,y;
+  int radius = 20;
+  
   String name = "";
   boolean named = false;
   color fill = color(60,110,200); //default color
-  int radius = 20;
+  
 
   Node(int X, int Y){
     x = X;
