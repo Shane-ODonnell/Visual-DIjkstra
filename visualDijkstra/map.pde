@@ -2,7 +2,7 @@
 class Map{
   int w,h;
   ArrayList<Node> nodes = new ArrayList<Node>();
-  ArrayList<PVector> lines = new ArrayList<PVector>();
+  ArrayList<Line> lines = new ArrayList<Line>();
   int currL = -1;
 
   Map(){
@@ -16,9 +16,9 @@ class Map{
       nodes.remove(n);
       //remove any lines connected to this node
       for(int i = 0; i < lines.size(); i++){
-        PVector curr = lines.get(i);
-        int node1 = floor(curr.x);
-        int node2 = floor(curr.y);
+        Line curr = lines.get(i);
+        int node1 = curr.node1;
+        int node2 = curr.node2;
 
         if(node1 == n || node2 == n){
           lines.remove(i);
@@ -26,17 +26,20 @@ class Map{
           i--;
         }
       }
+
       for(int i = 0; i < lines.size(); i++){
-        PVector curr = lines.get(i);
-        int node1 = floor(curr.x);
-        int node2 = floor(curr.y);
+        Line curr = lines.get(i);
+        int node1 = curr.node1;
+        int node2 = curr.node2;
+        
         if( node1 > n)
           node1--;
         if(node2 > n){
           node2--;
         }
-        PVector next = new PVector(node1,node2);
-        lines.set(i, next);
+
+        lines.get(i).updateIndex(node1, node2);
+
       }
     }
     else{
@@ -58,7 +61,9 @@ class Map{
         currL = -1;
         //now I need to add an intruction somehow that there is a line here
 
-        lines.add(new PVector(node1,node2));
+        lines.add(new Line(node1,node2));
+        lines.get(lines.size()-1)
+        .setNodes(nodes.get(node1).position(), nodes.get(node2).position());
         println("line added between nodes: " + node1 + " & " + node2);    
       }
     }
@@ -66,22 +71,12 @@ class Map{
   }
 
   void show(){
+
     int countL = lines.size();
     for(int i = 0; i < countL; i++){
-      //draw a line between nodes
-      PVector curr = lines.get(i);
-
-      int node1 = floor(curr.x);
-      int node2 = floor(curr.y);
-
-      Node n1 = nodes.get(node1);
-      Node n2 = nodes.get(node2);
-      
-      fill(0);
-      stroke(50);
-      line(n1.x, n1.y, n2.x, n2.y);
-      
+      lines.get(i).show();
     }
+    
     int count = nodes.size();
     for(int i = 0; i < count; i++){
       nodes.get(i).show(i);
