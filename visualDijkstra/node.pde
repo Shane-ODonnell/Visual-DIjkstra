@@ -2,6 +2,12 @@
 class Node{
   int x,y;
   int radius = 35;
+
+  boolean startingNode = false;
+  boolean endNode = false;
+
+  int prevNodeInPath = -1;
+  int shortestPathValue = 10000; //infinity till made shorter
   
   color fill = color(60,110,200); //default color
   
@@ -12,7 +18,10 @@ class Node{
   
   void show(int val){
     fill(fill);
-    
+    if(startingNode)
+      fill(color(150,30,30));
+    else if (endNode)
+      fill(color(30,150,30));
     stroke(0);
     strokeWeight(2);  // Default
 
@@ -42,6 +51,14 @@ class Node{
   PVector position(){
     PVector temp = new PVector(x,y);
     return temp;
+  }
+
+  void setAsStartNode(){
+    startingNode = true;
+  }
+
+  void setAsEndNode(){
+    endNode = true;
   }
 
 }

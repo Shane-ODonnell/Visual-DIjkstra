@@ -5,6 +5,9 @@ class Map{
   ArrayList<Line> lines = new ArrayList<Line>();
   int currL = -1;
 
+  int startingNode = -1;
+  int endNode = -1;
+
   Map(){
     w = width;
     h = height;
@@ -43,7 +46,8 @@ class Map{
       }
     }
     else{
-      nodes.add(new Node(x,y));
+      if( y + 20 < upperLimit)
+        nodes.add(new Node(x,y));
     }
   }
   
@@ -135,4 +139,60 @@ class Map{
     return -1;
   }
 
+  boolean setStartNode(){
+    int curr = getNode();
+    if(curr != -1){
+      for(int i = 0; i < nodes.size(); i++){
+        if(nodes.get(i).startingNode)
+          nodes.get(i).startingNode = false;
+      }
+      if(nodes.get(curr).endNode)
+        return false;
+      nodes.get(curr).setAsStartNode();
+      startingNode = curr;
+      return true;
+    }
+    return false;
+  }
+
+  boolean setEndNode(){
+    int curr = getNode();
+    if(curr != -1){
+      for(int i = 0; i < nodes.size(); i++){
+        if(nodes.get(i).endNode)
+          nodes.get(i).endNode = false;
+      }
+      if(nodes.get(curr).startingNode)
+        return false;
+      nodes.get(curr).setAsEndNode();
+      endNode = curr;
+      return true;
+    }
+    return false;
+  }
+
 }
+
+
+
+/*
+  void setStartNode(){
+    int curr = getNode();
+    if(curr != -1){
+      Node currNode = nodes.get(i);
+      currNode.setAsStartNode();
+      nodes.set(i, currNode);
+      startingNode = curr;
+    }
+  }
+
+  void setEndNode(){
+    int curr = getNode();
+    if(curr != -1){
+      Node currNode = nodes.get(i);
+      currNode.setAsEndNode();
+      nodes.set(i, currNode);
+      endNode = curr;
+    }
+  }
+//*/

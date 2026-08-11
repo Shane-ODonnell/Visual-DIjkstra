@@ -17,17 +17,17 @@ class Button {
 
   Button(int X, int Y, int W) {
     x = X;
-    y = Y;
+    y = Y - W;
     w = W;
     txtSize = floor(w/2);
   }
 
   Button(int X, int Y, int W, String title) {
     x = X;
-    y = Y;
+    y = Y - W;
     w = W;
     setText(title);
-    txtSize = floor(w/3);
+    txtSize = floor(w/4);
   }
 
   //-------------------------------------------------------------------------------
@@ -91,22 +91,12 @@ class Button {
 
   //-------------------------------------------------------------------------------
   
-
-
   void setTextSize(int temp) {
     txtSize = temp;
   }
 
-  void setTextColor(color temp) {
-    txtColor = temp;
-  }
-
   void setText(String title) {
     name = title;
-  }
-
-  void setColor(color temp) {
-    colour = temp;
   }
 
 }
