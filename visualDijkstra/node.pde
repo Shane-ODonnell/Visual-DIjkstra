@@ -49,6 +49,7 @@ class Node{
 class Line{
   int node1, node2;
   PVector n1, n2;
+  int weight = 0;
 
   Line(int n1, int n2){
     node1 = n1;
@@ -67,21 +68,23 @@ class Line{
     int space = 50;
     float margin = 0.5;
 
-    if(-margin < slope && slope < margin){
-      //directly above @ m = 0 
-      space = floor(space/2);
-      yMid = yMid - space;
-    }else if(slope < 0){
-      //diplay Length to the right
-      space = space + 5;
-      xMid = xMid + space;
-    } else if (slope > 0){
-      //display L to the left
-      xMid = xMid - space;
-    } 
+    /*
+      if(-margin < slope && slope < margin){
+        //directly above @ m = 0 
+        space = floor(space/2);
+        yMid = yMid - space;
+      }else if(slope < 0){
+        //diplay Length to the right
+        space = space + 5;
+        xMid = xMid + space;
+      } else if (slope > 0){
+        //display L to the left
+        xMid = xMid - space;
+      } 
+    //*/
 
-    //textSize(128); 
-    text(getDist(), xMid, yMid); 
+    if(weight != 0)
+      text(weight, xMid, yMid); 
 
   }
 
@@ -133,6 +136,14 @@ class Line{
 
     // Is mouse within margin pixels of line?
     return dist(mouseX, mouseY, closestX, closestY) < margin;
-}
+  }
+
+  void setWeight(int w){
+
+    weight = w;
+    if(9 < weight)
+      weight = 0;
+    println("Line weight set to: " + weight);
+  }
 
 }

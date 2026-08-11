@@ -73,13 +73,14 @@ class Map{
     int n = getLine();
     if( n != -1){
       println("Line clicked");
-    }
-    //TODO 
-    //WHEN a line is clicked, monitor keystrokes for numbers
-    //whatever value is typed in becomes the lines weighting 
+    
+      //TODO 
+      //WHEN a line is clicked, monitor keystrokes for numbers
+      //whatever value is typed in becomes the lines weighting 
+      
 
 
-
+    } 
   }
 
   void show(){

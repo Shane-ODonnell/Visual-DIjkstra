@@ -4,6 +4,8 @@
 //Shouldnt be able to make more than one route between two nodes
 Map map;
 boolean lineMode = false;
+boolean addingWeight = false;
+int currLine = -1;
 
 void setup(){
   size(500,500);
@@ -21,8 +23,15 @@ void mouseClicked() {
   if(lineMode){
     map.addLine();
   }
-  else
+  else if(map.getLine() != -1){
+    addingWeight = true;
+    currLine = map.getLine();
+  }
+  else{
     map.addNode(mouseX,mouseY);
+    addingWeight = false;
+    currLine = -1;
+  }
 }
 
 void keyPressed(){
@@ -31,4 +40,12 @@ void keyPressed(){
     map.currL = -1;
     println("line mode: " + lineMode);
   }
+
+  //if key is between 1 and 9 add it to the cell being edited
+  if( 49 <= key && key <= 57 && addingWeight){
+    map.lines.get(currLine).setWeight(key - 48); //convert char to int
+    addingWeight = false;
+    currLine = -1;
+  }
+
 }
