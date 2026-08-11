@@ -51,7 +51,9 @@ class Map{
     int n = getNode();
     if( currL == -1 ){
       currL = n;          //store this node
-      println("node1: " + currL);   
+      currL++;
+      println("node1: " + currL);
+      currL--;
     }
     else{
       //now currL should connect to node n 
@@ -61,26 +63,33 @@ class Map{
         currL = -1;
         //now I need to add an intruction somehow that there is a line here
 
+
+        //check if this line already exists before adding it
+        for(int i = 0; i < lines.size(); i++){
+          Line curr = lines.get(i);
+
+          int n1 = curr.node1;
+          int n2 = curr.node2;
+
+          if(node1 == n1 || node1 == n2){
+            if(node2 == n1 || node2 == n2){
+              node1++;node2++; // increase each by one only to make the following print statement more intuitive
+              println("line already exists between nodes: " + node1 + " & " + node2);  
+              return;
+            }
+          }
+
+
+        }
+
         lines.add(new Line(node1,node2));
         lines.get(lines.size()-1)
         .setNodes(nodes.get(node1).position(), nodes.get(node2).position());
+         // give the new line the Pvectors of it's nodes
+         node1++;node2++; // increase each by one only to make the following print statement more intuitive
         println("line added between nodes: " + node1 + " & " + node2);    
       }
     }
-  }
-
-  void weightLine(){
-    int n = getLine();
-    if( n != -1){
-      println("Line clicked");
-    
-      //TODO 
-      //WHEN a line is clicked, monitor keystrokes for numbers
-      //whatever value is typed in becomes the lines weighting 
-      
-
-
-    } 
   }
 
   void show(){

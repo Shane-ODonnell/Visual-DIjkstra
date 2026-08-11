@@ -1,7 +1,7 @@
 
 //visual Dijkstra
 //TODO 
-//Shouldnt be able to make more than one route between two nodes
+
 Map map;
 boolean lineMode = false;
 boolean addingWeight = false;
