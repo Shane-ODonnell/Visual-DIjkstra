@@ -12,6 +12,10 @@ class Node{
   
   void show(int val){
     fill(fill);
+    
+    stroke(0);
+    strokeWeight(2);  // Default
+
     circle(x, y, radius);
     fill(255);
     textAlign(CENTER, CENTER);
@@ -53,13 +57,14 @@ class Line{
 
   void show(){
     fill(0);
-    stroke(50);
+    stroke(100);
+    strokeWeight(16);  // Thicker
     line(n1.x, n1.y, n2.x, n2.y);
 
     float slope = getSlope();
     int xMid = floor((n2.x + n1.x) / 2 );
     int yMid = floor((n2.y + n1.y) / 2 );
-    int space = 30;
+    int space = 50;
     float margin = 0.5;
 
     if(-margin < slope && slope < margin){
@@ -75,8 +80,7 @@ class Line{
       xMid = xMid - space;
     } 
 
-
-    //textSize(128);
+    //textSize(128); 
     text(getDist(), xMid, yMid); 
 
   }
