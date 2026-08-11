@@ -55,7 +55,7 @@ class Map{
     }
     else{
       //now currL should connect to node n 
-      if(currL != n){
+      if(currL != n && n != -1){
         int node1 = currL;
         int node2 = n;
         currL = -1;
@@ -67,7 +67,19 @@ class Map{
         println("line added between nodes: " + node1 + " & " + node2);    
       }
     }
-  
+  }
+
+  void weightLine(){
+    int n = getLine();
+    if( n != -1){
+      println("Line clicked");
+    }
+    //TODO 
+    //WHEN a line is clicked, monitor keystrokes for numbers
+    //whatever value is typed in becomes the lines weighting 
+
+
+
   }
 
   void show(){
@@ -76,7 +88,7 @@ class Map{
     for(int i = 0; i < countL; i++){
       lines.get(i).show();
     }
-    
+
     int count = nodes.size();
     for(int i = 0; i < count; i++){
       nodes.get(i).show(i);
@@ -97,6 +109,16 @@ class Map{
     int count = nodes.size();
     for(int i = 0; i < count; i++){
       if(nodes.get(i).mouseOver())
+        return i;
+    }
+
+    return -1;
+  }
+
+  int getLine(){
+    int count = lines.size();
+    for(int i = 0; i < count; i++){
+      if(lines.get(i).mouseOver())
         return i;
     }
 

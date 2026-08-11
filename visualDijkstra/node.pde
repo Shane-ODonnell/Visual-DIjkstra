@@ -109,4 +109,30 @@ class Line{
     node2 = newNode2;
   }
 
+  boolean mouseOver() {
+    int margin = 10;
+    float x1 = n1.x;
+    float y1 = n1.y;
+    float x2 = n2.x;
+    float y2 = n2.y;
+
+    float dx = x2 - x1;
+    float dy = y2 - y1;
+
+    float lengthSquared = sq(dx) + sq(dy);
+
+    // How far along the line is the closest point?
+    float t = ((mouseX - x1) * dx + (mouseY - y1) * dy)/ lengthSquared;
+
+    // Clamp it so we're only checking between n1 and n2
+    t = constrain(t, 0, 1);
+
+    // Closest point on the line
+    float closestX = x1 + t * dx;
+    float closestY = y1 + t * dy;
+
+    // Is mouse within margin pixels of line?
+    return dist(mouseX, mouseY, closestX, closestY) < margin;
+}
+
 }
