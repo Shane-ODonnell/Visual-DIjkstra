@@ -7,11 +7,20 @@ boolean lineMode = false;
 boolean addingWeight = false;
 int currLine = -1;
 
+Button addLineButton;
+Button setStartButton;
+Button setEndButton;
+
 void setup(){
   size(500,500);
   background(200);
   map = new Map();
   textSize(30);
+
+  int buttonW = floor(width / 10);
+
+  addLineButton = new Button( 0, height - buttonW, buttonW );
+
 }
 
 void draw(){
