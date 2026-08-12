@@ -1,7 +1,7 @@
 
 class Node{
   int x,y;
-  int radius = 50;
+  int radius = 65;
 
   boolean startingNode = false;
   boolean endNode = false;
@@ -35,13 +35,15 @@ class Node{
     textAlign(CENTER, CENTER);
     val++;
 
-    int yMargin = 10;
+    textSize(35);
+    int yMargin = 15;
     text(val, x, y - yMargin);
 
     if( shortestPathValue >= 1000)
       text('∞', x, y + yMargin);
     else
       text(shortestPathValue, x, y + yMargin);
+     textSize(30);
   }
   
   boolean mouseOver(){
