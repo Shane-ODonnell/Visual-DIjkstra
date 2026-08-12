@@ -29,11 +29,19 @@ class Node{
     stroke(0);
     strokeWeight(2);  // Default
 
+    
     circle(x, y, radius);
     fill(255);
     textAlign(CENTER, CENTER);
     val++;
-    text(val, x, y);
+
+    int yMargin = 10;
+    text(val, x, y - yMargin);
+
+    if( shortestPathValue >= 1000)
+      text('∞', x, y + yMargin);
+    else
+      text(shortestPathValue, x, y + yMargin);
   }
   
   boolean mouseOver(){
@@ -59,6 +67,7 @@ class Node{
 
   void setAsStartNode(){
     startingNode = true;
+    shortestPathValue = 0;
   }
 
   void setAsEndNode(){
