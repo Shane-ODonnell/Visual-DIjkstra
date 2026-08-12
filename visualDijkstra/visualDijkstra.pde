@@ -75,9 +75,16 @@ void mouseClicked() {
 
 void keyPressed(){
   if( key == 'l' || key == 'L' ){
-    //lineMode = ! lineMode;
-    map.currL = -1;
+    addLineButton.toggle();
     println("line mode: " + lineMode);
+  }
+  if( key == 's' || key == 'S' ){
+    setStartButton.toggle();
+
+  }
+  if( key == 'e' || key == 'E' ){
+    setEndButton.toggle();
+   
   }
 
   //if key is between 1 and 9 add it to the cell being edited
@@ -111,6 +118,7 @@ void setEndButtonFunction(){
 }// function to run when addLine Button is clicked
 
 void oneButton(char choice){
+  map.currL = -1;
   if(choice != 'l'){
     addLineButton.toggle = false;
     addLineButton.prevToggle = false;
