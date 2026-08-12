@@ -1,7 +1,7 @@
 
 class Node{
   int x,y;
-  int radius = 35;
+  int radius = 50;
 
   boolean startingNode = false;
   boolean endNode = false;
@@ -14,6 +14,10 @@ class Node{
   Node(int X, int Y){
     x = X;
     y = Y;
+  }
+
+  int getRadius(){
+    return radius;
   }
   
   void show(int val){

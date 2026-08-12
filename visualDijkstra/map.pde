@@ -1,6 +1,7 @@
 
 class Map{
   int w,h;
+  int radius;
   ArrayList<Node> nodes = new ArrayList<Node>();
   ArrayList<Line> lines = new ArrayList<Line>();
   int currL = -1;
@@ -11,6 +12,8 @@ class Map{
   Map(){
     w = width;
     h = height;
+    Node temp = new Node(0,0);
+    radius = temp.radius;
   }
   
   void addNode(int x, int y){
@@ -46,7 +49,7 @@ class Map{
       }
     }
     else{
-      if( y + 20 < upperLimit)
+      if( y + floor(radius/2) < upperLimit)
         nodes.add(new Node(x,y));
     }
   }
