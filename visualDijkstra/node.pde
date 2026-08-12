@@ -5,6 +5,7 @@ class Node{
 
   boolean startingNode = false;
   boolean endNode = false;
+  boolean considering = false;
 
   int prevNodeInPath = -1;
   int shortestPathValue = 10000; //infinity till made shorter
@@ -29,6 +30,10 @@ class Node{
     stroke(0);
     strokeWeight(2);  // Default
 
+    if(mouseOver())
+      stroke(255);
+    if(considering)
+      stroke(color(250, 250, 0));
     
     circle(x, y, radius);
     fill(255);
@@ -56,7 +61,7 @@ class Node{
       distY = distY * -1;
 
     if ( distX <= radius && distY <= radius){
-        return true;
+      return true;
     }
     
     return false;

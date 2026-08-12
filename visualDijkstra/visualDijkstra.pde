@@ -7,11 +7,13 @@ boolean lineMode = false;
 boolean addingWeight = false;
 boolean settingStartNode = false;
 boolean settingEndNode = false;
+boolean started = false;
 int currLine = -1;
 
 Button addLineButton;
 Button setStartButton;
 Button setEndButton;
+Button startButton;
 
 int upperLimit;
 
@@ -28,6 +30,8 @@ void setup(){
   addLineButton = new Button( bufferSpace, height - bufferSpace , buttonW, "Lines" );
   setStartButton = new Button( 2*bufferSpace + buttonW, height - bufferSpace , buttonW, "Set Start" );
   setEndButton = new Button( 3*bufferSpace + 2*buttonW, height - bufferSpace , buttonW, "Set End" );
+  startButton = new Button( 4*bufferSpace + 3*buttonW, height - bufferSpace , buttonW, "Start" );
+
 }
 
 void draw(){
@@ -36,11 +40,13 @@ void draw(){
   addLineButton.show();
   setStartButton.show();
   setEndButton.show();
+  startButton.show();
 
   strokeWeight(8);
   line(0, upperLimit, width, upperLimit);
   strokeWeight(2);
 
+  startButtonFunction();
   addLineButtonFunction();
   setStartButtonFunction();
   setEndButtonFunction();
@@ -58,6 +64,13 @@ void mouseClicked() {
     settingEndNode = !map.setEndNode();
     setEndButton.toggle = settingEndNode;
   }
+  else if(started){
+    //function to start pathfinding 
+    println( "start button clicked" );
+    delay(200);
+    startButton.toggle = false;
+    started = false;
+  }
   else if(map.getLine() != -1){
     addingWeight = true;
     currLine = map.getLine();
@@ -71,6 +84,7 @@ void mouseClicked() {
   addLineButton.click();
   setStartButton.click();
   setEndButton.click();
+  startButton.click();
 }
 
 void keyPressed(){
@@ -117,8 +131,20 @@ void setEndButtonFunction(){
   }
 }// function to run when addLine Button is clicked
 
+void startButtonFunction(){
+  if(startButton.toggled()){
+    started = startButton.toggle;
+    oneButton('g');
+  }
+}
+
 void oneButton(char choice){
-  map.currL = -1;
+  if(map.currL != -1){
+    map.nodes.get(map.currL).considering = false;
+    map.currL = -1;
+  }
+
+
   if(choice != 'l'){
     addLineButton.toggle = false;
     addLineButton.prevToggle = false;
@@ -133,6 +159,12 @@ void oneButton(char choice){
     setEndButton.toggle = false;
     setEndButton.prevToggle = false;
     settingEndNode = false;
+  }
+
+  if(choice != 'g'){
+    startButton.toggle = false;
+    startButton.prevToggle = false;
+    started = false;
   }
 
   println("one button: " + choice);

@@ -58,6 +58,8 @@ class Map{
     int n = getNode();
     if( currL == -1 ){
       currL = n;          //store this node
+      if(n != -1)
+        nodes.get(n).considering = true;
       currL++;
       println("node1: " + currL);
       currL--;
@@ -70,7 +72,7 @@ class Map{
         currL = -1;
         //now I need to add an intruction somehow that there is a line here
 
-
+        nodes.get(node1).considering = false;
         //check if this line already exists before adding it
         for(int i = 0; i < lines.size(); i++){
           Line curr = lines.get(i);
