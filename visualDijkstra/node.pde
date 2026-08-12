@@ -74,7 +74,7 @@ class Line{
   }
 
   void show(){
-    fill(0);
+    fill(255);
     stroke(100);
     strokeWeight(16);  // Thicker
     line(n1.x, n1.y, n2.x, n2.y);
