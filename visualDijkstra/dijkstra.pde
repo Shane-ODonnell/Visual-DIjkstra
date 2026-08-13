@@ -138,7 +138,7 @@ class Dijkstra {
             //follow the currentLine and update the estimate
             
             println("started substep: " + subStep);
-            
+
             Line curr = lines.get(current_line);
 
             //
@@ -157,12 +157,63 @@ class Dijkstra {
             nodes.get(destination).considering = false;
 
             inspectedRoutes++;
-            if(number_of_lines_coming_from_current_node > inspectedRoutes)
+            if(number_of_lines_coming_from_current_node >= inspectedRoutes)
                 nextStep = 2;
             else 
-                nextStep++;
+                nextStep = 4;
             //
 
+        }
+
+        else if (subStep == 4){
+            println("started substep: " + subStep);
+            //Ok so I can update estimates for the nodes connected to current node
+
+            //now I need to choose the next vertex 
+            nodes.get(currentNode).considering = false;
+            nodes.get(currentNode).explored = true;
+            int min = 1000;
+            int nextNode = startNode;
+
+            for(int i = 0; i < nodes.size(); i++){
+                //
+                if(nodes.get(i).shortestPathValue < min && i != startNode){
+                    //
+                    if(nodes.get(i).explored == false){
+                        min = nodes.get(i).shortestPathValue;
+                        nextNode = i;                
+                    }
+                
+                }
+            
+            }
+
+            currentNode = nextNode;
+
+            nodes.get(currentNode).considering = true;
+            if(currentNode == endNode)
+                nextStep = 5;
+            nextStep = 1;
+        
+        }
+
+        else if (subStep == 5){
+            //end checks
+            boolean done = true;
+            for(int i = 0; i < nodes.size(); i++){
+                //
+                if(nodes.get(i).explored == false){
+                    //
+                    done = false;
+                    currentNode = i;
+                
+                }
+
+            
+            
+            }
+        
+            started = !done;
         }
 
 

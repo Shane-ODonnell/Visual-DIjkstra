@@ -197,7 +197,7 @@ class Map{
     lines = algo.getLines();
     nodes = algo.getNodes();
   
-    println( " finished step 1, substep: " + subStep);
+    println( " finished substep: " + subStep);
     delay(1000);
   }
 
