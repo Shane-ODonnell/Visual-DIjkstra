@@ -52,52 +52,7 @@ class Dijkstra {
         return -1;
     }
 
-
     //------------------------------------------------
-
-    void run(){
-        //
-        if( readyToStart() ) {
-            //ready to start
-            //currentNode = startNode;
-            for(int i = 0; i < lines.size(); i++ ){
-                Line curr = lines.get(i);
-                if( curr.weight == 0 )
-                    break; // unfinished line; // unfinished line
-                if(curr.node1 == currentNode || curr.node2 == currentNode){
-                    //
-                    int destination;
-                    if (curr.node1 == currentNode ){
-                        destination = curr.node2;
-                    }
-                    else {
-                        destination = curr.node1;
-                    }
-                
-                    int estimate = nodes.get(destination).shortestPathValue;
-                    
-                    int newEstimate = nodes.get(currentNode).shortestPathValue + curr.weight;
-
-                    if(newEstimate < estimate ) 
-                        estimate = newEstimate;
-                    nodes.get(destination).shortestPathValue = estimate;
-                
-                }
-            
-            
-            
-            }
-
-
-        }
-        else 
-            println("not ready to start");
-        //
-    }
-    
-    
-    //------------------------------------------------
-
 
     int step1(int subStep){
         //highlight the lines connected to the current Node
