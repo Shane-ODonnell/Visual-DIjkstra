@@ -104,8 +104,10 @@ class Dijkstra {
             
             int newEstimate = nodes.get(currentNode).shortestPathValue + curr.weight;
 
-            if(newEstimate < estimate ) 
+            if(newEstimate < estimate ){ 
                 estimate = newEstimate;
+                nodes.get(destination).shortest_path = current_line;
+            }
             nodes.get(destination).shortestPathValue = estimate;
         
             nodes.get(destination).considering = false;
@@ -166,6 +168,26 @@ class Dijkstra {
             }
         
             started = !done;
+            if(done){
+                currentNode = map.endNode;
+                int path = nodes.get(currentNode).shortest_path; //shortest path to this node
+                lines.get(path).highlight = true;
+
+                int stop = 2;
+                for(int i = 0; i < stop; i++){
+                    currentNode = getDestination(path);
+                    if(currentNode != map.startingNode){
+                        path = nodes.get(currentNode).shortest_path; //shortest path to this node
+                        lines.get(path).highlight = true;
+                    }
+                    else
+                        stop++;              
+                
+                }
+            
+            
+            
+            }
         }
 
         return nextStep;

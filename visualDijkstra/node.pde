@@ -10,6 +10,7 @@ class Node{
 
   int prevNodeInPath = -1;
   int shortestPathValue = 10000; //infinity till made shorter
+  int shortest_path;
   
   color fill = color(60,110,200); //default color
   
@@ -34,7 +35,7 @@ class Node{
     if(mouseOver())
       stroke(255);
     if(considering)
-      stroke(color(250, 250, 0));
+      stroke(color(250, 190, 0));
     
     circle(x, y, radius);
     fill(255);
