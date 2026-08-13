@@ -187,6 +187,11 @@ void startButtonFunction(){
   if(startButton.toggled()){
     started = startButton.toggle;
     oneButton('g');
+    map.startDijkstra();
+    if(map.running)
+      started = true;
+    else 
+      oneButton('n');
   }
 }
 

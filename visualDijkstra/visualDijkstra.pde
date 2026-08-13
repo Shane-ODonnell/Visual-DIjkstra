@@ -11,6 +11,7 @@ boolean started = false;
 int currLine = -1;
 
 int upperLimit;
+int step = 0;
 
 void setup(){
   size(500,500);
@@ -26,12 +27,29 @@ void draw(){
   background(200);
   map.show();
   showUI();
-
   strokeWeight(8);
   line(0, upperLimit, width, upperLimit);
   strokeWeight(2);
 
   UIfunctions();
+
+  if(started){
+    //  
+    step++;
+    if(step == 1){
+      //
+      map.step1();
+
+
+
+
+    }
+  
+  
+  
+    //delay(2 * 1000);
+  }
+
 }
 
 void mouseClicked() {

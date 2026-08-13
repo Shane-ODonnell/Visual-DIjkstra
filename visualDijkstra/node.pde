@@ -6,6 +6,7 @@ class Node{
   boolean startingNode = false;
   boolean endNode = false;
   boolean considering = false;
+  boolean explored = false;
 
   int prevNodeInPath = -1;
   int shortestPathValue = 10000; //infinity till made shorter
@@ -74,6 +75,7 @@ class Node{
 
   void setAsStartNode(){
     startingNode = true;
+    explored = true;
     shortestPathValue = 0;
   }
 
@@ -87,6 +89,8 @@ class Line{
   int node1, node2;
   PVector n1, n2;
   int weight = 0;
+  
+  boolean highlight;
 
   Line(int n1, int n2){
     node1 = n1;
@@ -97,6 +101,11 @@ class Line{
     fill(255);
     stroke(100);
     strokeWeight(16);  // Thicker
+
+    if(highlight)
+      stroke(150);
+    //
+
     line(n1.x, n1.y, n2.x, n2.y);
 
     float slope = getSlope();
@@ -183,4 +192,7 @@ class Line{
     println("Line weight set to: " + weight);
   }
 
+  void highlight(){
+    highlight = !highlight;
+  }
 }

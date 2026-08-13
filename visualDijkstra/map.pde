@@ -6,6 +6,9 @@ class Map{
   ArrayList<Line> lines = new ArrayList<Line>();
   int currL = -1;
 
+  Dijkstra algo;
+  boolean running = false;
+
   int startingNode = -1;
   int endNode = -1;
 
@@ -175,6 +178,25 @@ class Map{
       return true;
     }
     return false;
+  }
+
+  //---------------------------------------------------------------------------------
+
+  void startDijkstra(){
+    //
+    algo = new Dijkstra(nodes, lines);
+    if(algo.readyToStart())
+      running = true;  
+  }
+
+  void step1(){
+    algo.step1();
+
+    lines = algo.getLines();
+    nodes = algo.getNodes();
+  
+  
+  
   }
 
 }
