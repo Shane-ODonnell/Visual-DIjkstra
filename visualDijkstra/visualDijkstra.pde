@@ -53,6 +53,9 @@ void draw(){
 }
 
 void mouseClicked() {
+
+  startButton.click();
+
   if(lineMode){
     map.addLine();
   }
@@ -67,8 +70,6 @@ void mouseClicked() {
   else if(started){
     //function to start pathfinding 
     println( "start button clicked" );
-    delay(200);
-    startButton.toggle = false;
     started = false;
   }
   else if(map.getLine() != -1){
@@ -84,7 +85,6 @@ void mouseClicked() {
   addLineButton.click();
   setStartButton.click();
   setEndButton.click();
-  startButton.click();
 }
 
 void keyPressed(){
