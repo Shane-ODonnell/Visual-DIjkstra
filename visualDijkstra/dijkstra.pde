@@ -108,6 +108,7 @@ class Dijkstra {
                 estimate = newEstimate;
                 nodes.get(destination).shortest_path = current_line;
             }
+
             nodes.get(destination).shortestPathValue = estimate;
         
             nodes.get(destination).considering = false;
@@ -131,6 +132,8 @@ class Dijkstra {
             int min = 1000;
             int nextNode = startNode;
 
+            boolean goToStep5 = true;
+
             for(int i = 0; i < nodes.size(); i++){
                 if(nodes.get(i).shortestPathValue < min && i != startNode){
                     //
@@ -138,14 +141,17 @@ class Dijkstra {
                         min = nodes.get(i).shortestPathValue;
                         nextNode = i; 
                         nextStep = 1;    
-                        i = nodes.size();           
+                        goToStep5 = false;   
                     }
-                    else 
-                        nextStep = 5;
+                    
                 
                 }
             
             }
+
+            if(goToStep5)
+                nextStep = 5;
+            //
 
             currentNode = nextNode;
 
