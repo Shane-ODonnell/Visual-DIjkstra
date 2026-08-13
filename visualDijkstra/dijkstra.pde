@@ -132,13 +132,13 @@ class Dijkstra {
             int nextNode = startNode;
 
             for(int i = 0; i < nodes.size(); i++){
-                //
                 if(nodes.get(i).shortestPathValue < min && i != startNode){
                     //
                     if(nodes.get(i).explored == false){
                         min = nodes.get(i).shortestPathValue;
                         nextNode = i; 
-                        nextStep = 1;               
+                        nextStep = 1;    
+                        i = nodes.size();           
                     }
                     else 
                         nextStep = 5;
