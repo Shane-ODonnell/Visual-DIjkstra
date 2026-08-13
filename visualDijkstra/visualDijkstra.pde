@@ -15,7 +15,8 @@ int step = 1;
 
 void setup(){
   size(500,500);
-  background(200);
+  background(25);
+  
   map = new Map();
   textSize(30);
 
@@ -24,12 +25,18 @@ void setup(){
 }
 
 void draw(){
-  background(200);
+  background(25);
+  fill(200);
+  rect(0, upperLimit, width , height - upperLimit);
+
   map.show();
   showUI();
-  strokeWeight(8);
-  line(0, upperLimit, width, upperLimit);
-  strokeWeight(2);
+
+  /*
+    strokeWeight(8);
+    line(0, upperLimit, width, upperLimit);
+    strokeWeight(2);
+  //*/
 
   UIfunctions();
 

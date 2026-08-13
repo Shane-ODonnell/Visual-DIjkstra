@@ -102,8 +102,15 @@ class Line{
     stroke(100);
     strokeWeight(16);  // Thicker
 
-    if(highlight)
-      stroke(150);
+    if(highlight){
+      stroke(color(255,190,0));
+      fill(0);
+    }
+    else if(mouseOver()){
+      //
+      stroke(200);
+      fill(0);
+    }
     //
 
     line(n1.x, n1.y, n2.x, n2.y);
