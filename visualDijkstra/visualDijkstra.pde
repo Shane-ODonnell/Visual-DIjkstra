@@ -34,19 +34,7 @@ void draw(){
   UIfunctions();
 
   if(started){
-    // 
-    if(step == 1){
-      //
-      map.step1();
-
-
-
-
-    }
-  
-  
-  
-    //delay(2 * 1000);
+   map.run();
   }
 
 }

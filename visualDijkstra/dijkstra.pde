@@ -54,11 +54,12 @@ class Dijkstra {
 
     //------------------------------------------------
 
-    int step1(int subStep){
+    int run(int subStep){
         //highlight the lines connected to the current Node
         int nextStep = 2;
         if(subStep == 1){
-            println("started substep: " + subStep);
+            println("current node = " + currentNode); 
+
             if( readyToStart() ) {
                 //currentNode = startNode;
                 number_of_lines_coming_from_current_node = highlightConnectedLines(true);
@@ -66,10 +67,10 @@ class Dijkstra {
             }            
         }
 
-        else if( subStep == 2){
+        else if( subStep == 2 ){
             //remove highlights from all but one and check out the end of that line
             highlightConnectedLines(false);
-            println("started substep: " + subStep);
+            
             int found = 0;
             for(int i = 0; i < lines.size(); i++ ){
                 Line curr = lines.get(i);
@@ -91,9 +92,7 @@ class Dijkstra {
 
         else if( subStep == 3) {
             //follow the currentLine and update the estimate
-            
-            println("started substep: " + subStep);
-
+        
             Line curr = lines.get(current_line);
 
             //
@@ -121,12 +120,12 @@ class Dijkstra {
         }
 
         else if (subStep == 4){
-            println("started substep: " + subStep);
             //Ok so I can update estimates for the nodes connected to current node
 
             //now I need to choose the next vertex 
             nodes.get(currentNode).considering = false;
             nodes.get(currentNode).explored = true;
+
             int min = 1000;
             int nextNode = startNode;
 
@@ -136,8 +135,11 @@ class Dijkstra {
                     //
                     if(nodes.get(i).explored == false){
                         min = nodes.get(i).shortestPathValue;
-                        nextNode = i;                
+                        nextNode = i; 
+                        nextStep = 1;               
                     }
+                    else 
+                        nextStep = 5;
                 
                 }
             
@@ -145,34 +147,27 @@ class Dijkstra {
 
             currentNode = nextNode;
 
-            nodes.get(currentNode).considering = true;
-            if(currentNode == endNode)
-                nextStep = 5;
-            nextStep = 1;
+            nodes.get(currentNode).considering = true;                      
         
         }
 
         else if (subStep == 5){
             //end checks
+            nodes.get(map.startingNode).explored = true;
             boolean done = true;
             for(int i = 0; i < nodes.size(); i++){
                 //
                 if(nodes.get(i).explored == false){
-                    //
                     done = false;
                     currentNode = i;
-                
+                    println("Step 5 is sending search to node: " + currentNode);
                 }
 
-            
-            
             }
         
             started = !done;
         }
 
-
-        println("finished substep: " + subStep);
         return nextStep;
     }
     

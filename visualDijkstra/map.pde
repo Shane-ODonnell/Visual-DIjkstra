@@ -190,14 +190,13 @@ class Map{
       running = true;  
   }
 
-  void step1(){
-    int temp = algo.step1(subStep);
+  void run(){
+    int temp = algo.run(subStep);
     subStep = temp;
 
     lines = algo.getLines();
     nodes = algo.getNodes();
   
-    println( " finished substep: " + subStep);
     delay(1000);
   }
 
