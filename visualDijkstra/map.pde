@@ -8,6 +8,7 @@ class Map{
 
   Dijkstra algo;
   boolean running = false;
+  int subStep = 1;
 
   int startingNode = -1;
   int endNode = -1;
@@ -190,13 +191,14 @@ class Map{
   }
 
   void step1(){
-    algo.step1();
+    int temp = algo.step1(subStep);
+    subStep = temp;
 
     lines = algo.getLines();
     nodes = algo.getNodes();
   
-  
-  
+    println( " finished step 1, substep: " + subStep);
+    delay(1000);
   }
 
 }

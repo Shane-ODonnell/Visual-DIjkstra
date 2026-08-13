@@ -11,7 +11,7 @@ boolean started = false;
 int currLine = -1;
 
 int upperLimit;
-int step = 0;
+int step = 1;
 
 void setup(){
   size(500,500);
@@ -34,8 +34,7 @@ void draw(){
   UIfunctions();
 
   if(started){
-    //  
-    step++;
+    // 
     if(step == 1){
       //
       map.step1();
