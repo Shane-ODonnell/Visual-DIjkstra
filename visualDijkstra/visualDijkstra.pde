@@ -90,5 +90,8 @@ void keyPressed(){
       map.clear();
       setup();
     }
+    if( key == 'n'){
+      map.presetNodes();
+    }
   }
 }

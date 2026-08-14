@@ -199,7 +199,7 @@ class Map{
     lines = algo.getLines();
     nodes = algo.getNodes();
   
-    delay(1000);
+    delay(500);
   }
 
   void clear(){
@@ -211,6 +211,24 @@ class Map{
 
   
   }
+
+  void presetNodes(){
+    //
+    clear();
+    int halfX = floor(width / 2);  
+    int x = halfX / 2;
+    int h = upperLimit;
+    int halfY = floor(h/2);
+    int y = halfY/2;
+
+    addNode( x, y);
+    addNode( x + halfX, y);
+    addNode( x, y + halfY);
+    addNode( x + halfX, y + halfY);
+  
+  }
+
+
 
 }
 
