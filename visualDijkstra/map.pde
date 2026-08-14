@@ -198,8 +198,9 @@ class Map{
 
     lines = algo.getLines();
     nodes = algo.getNodes();
-  
-    delay(500);
+
+    if( subStep != 1)
+      delay(1000);
   }
 
   void clear(){

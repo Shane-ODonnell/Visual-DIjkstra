@@ -181,7 +181,7 @@ class Dijkstra {
                 int path = nodes.get(currentNode).shortest_path; //shortest path to this node
                 lines.get(path).highlight = true;
                 nextStep = 6;         
-            
+                delay(500);
             
             }
         }
@@ -203,7 +203,7 @@ class Dijkstra {
                 oneButton('n');
                 map.running = false;
             }
-            
+            delay(10);
             
 
         }
