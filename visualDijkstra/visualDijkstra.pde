@@ -18,8 +18,9 @@
   function to delete lines when clicked (without braking how weights are currently added
   the default stroke doesnt match the usual storke (line thickness on buttons changes after first click) - fix
   add animation detail where the estimate under analyses is highlighted some way, such as changing font color
-  add delays after certain steps to make more important steps stand out 
-  shorten the delay that happens while the algo is choosing its next veretex
+
+  add delays after certain steps to make more important steps stand out - wip
+  shorten the delay that happens while the algo is choosing its next veretex -wip
 
   STEP BUTTON  button that is control of moving through the algo. each step needs instruction not wait time
 
