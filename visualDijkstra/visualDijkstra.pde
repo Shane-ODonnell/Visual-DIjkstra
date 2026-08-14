@@ -40,48 +40,47 @@ void draw(){
 }
 
 void mouseClicked() {
-  if( !started)
+  if( !started){
     clickUI();
-  // dont get to use buttons while the sim is running
-  if(lineMode){
-    map.addLine();
+    // dont get to use buttons while the sim is running
+    if(lineMode){
+      map.addLine();
+    }
+    else if(settingStartNode){
+      settingStartNode = !map.setStartNode();
+      setStartButton.toggle = settingStartNode;
+      //turn off the button if we successfully set a start node
+    }
+    else if(settingEndNode){
+      settingEndNode = !map.setEndNode();
+      setEndButton.toggle = settingEndNode;
+    }
+    else if(map.getLine() != -1){
+      addingWeight = true;
+      currLine = map.getLine();
+    }
+    else{
+      map.addNode(mouseX,mouseY);
+      addingWeight = false;
+      currLine = -1;
+    }
   }
-  else if(settingStartNode){
-    settingStartNode = !map.setStartNode();
-    setStartButton.toggle = settingStartNode;
-    //turn off the button if we successfully set a start node
-  }
-  else if(settingEndNode){
-    settingEndNode = !map.setEndNode();
-    setEndButton.toggle = settingEndNode;
-  }
-  else if(map.getLine() != -1){
-    addingWeight = true;
-    currLine = map.getLine();
-  }
-  else{
-    map.addNode(mouseX,mouseY);
-    addingWeight = false;
-    currLine = -1;
-  }
-
 }
 
 void keyPressed(){
-  
-  if( !started)
+  if( !started){
     typeUI();
-  //
-  
-  //if key is between 1 and 9 add it to the cell being edited
-  if( 49 <= key && key <= 57 && addingWeight){
-    map.lines.get(currLine).setWeight(key - 48); //convert char to int
-    addingWeight = false;
-    currLine = -1;
-  }
+
+    //if key is between 1 and 9 add it to the cell being edited
+    if( 49 <= key && key <= 57 && addingWeight){
+      map.lines.get(currLine).setWeight(key - 48); //convert char to int
+      addingWeight = false;
+      currLine = -1;
+    }
 
 
-  if( key == 'c' ){
-    map.clear();
+    if( key == 'c'){
+      map.clear();
+    }
   }
 }
