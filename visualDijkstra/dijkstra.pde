@@ -56,6 +56,7 @@ class Dijkstra {
 
     int run(int subStep){
         //highlight the lines connected to the current Node
+        nodes.get(map.startingNode).explored = true;
         int nextStep = 2;
         if(subStep == 1){
             println("current node = " + currentNode); 
