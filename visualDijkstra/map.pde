@@ -152,9 +152,11 @@ class Map{
     int curr = getNode();
     if(curr != -1){
       for(int i = 0; i < nodes.size(); i++){
-        if(nodes.get(i).startingNode)
-          nodes.get(i).startingNode = false; 
+        if(nodes.get(i).startingNode){
+          nodes.get(i).startingNode = false;
+          nodes.get(i).shortestPathValue = 10000; 
           //since the map stored the starting Node maybe I just target that one instead of searching
+        }
       }
       if(nodes.get(curr).endNode)
         return false;
