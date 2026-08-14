@@ -176,6 +176,7 @@ class Dijkstra {
             started = !done;
             if(done){
                 currentNode = map.endNode;
+                nodes.get(currentNode).considering = true;
                 int path = nodes.get(currentNode).shortest_path; //shortest path to this node
                 lines.get(path).highlight = true;
 
@@ -185,6 +186,8 @@ class Dijkstra {
                     if(currentNode != map.startingNode){
                         path = nodes.get(currentNode).shortest_path; //shortest path to this node
                         lines.get(path).highlight = true;
+                        nodes.get(currentNode).considering = true;
+                
                     }
                     else
                         stop++;              
