@@ -204,10 +204,11 @@ class Map{
 
   void clear(){
     //
-    nodes = new ArrayList<Node>();
-    lines = new ArrayList<Line>();
-  
-  
+    if(!started && !running){
+      nodes = new ArrayList<Node>();
+      lines = new ArrayList<Line>();
+    }
+
   
   }
 

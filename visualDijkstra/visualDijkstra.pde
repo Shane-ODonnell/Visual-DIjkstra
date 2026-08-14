@@ -11,7 +11,6 @@ boolean started = false;
 int currLine = -1;
 
 int upperLimit;
-int step = 1;
 
 void setup(){
   size(500,500);
@@ -32,12 +31,6 @@ void draw(){
   map.show();
   showUI();
 
-  /*
-    strokeWeight(8);
-    line(0, upperLimit, width, upperLimit);
-    strokeWeight(2);
-  //*/
-
   UIfunctions();
 
   if(started){
@@ -47,24 +40,20 @@ void draw(){
 }
 
 void mouseClicked() {
-
-  clickUI();
-
+  if( !started)
+    clickUI();
+  // dont get to use buttons while the sim is running
   if(lineMode){
     map.addLine();
   }
   else if(settingStartNode){
     settingStartNode = !map.setStartNode();
     setStartButton.toggle = settingStartNode;
+    //turn off the button if we successfully set a start node
   }
   else if(settingEndNode){
     settingEndNode = !map.setEndNode();
     setEndButton.toggle = settingEndNode;
-  }
-  else if(started){
-    //function to start pathfinding 
-    println( "start button clicked" );
-    started = false;
   }
   else if(map.getLine() != -1){
     addingWeight = true;
@@ -80,8 +69,10 @@ void mouseClicked() {
 
 void keyPressed(){
   
-  typeUI();
-
+  if( !started)
+    typeUI();
+  //
+  
   //if key is between 1 and 9 add it to the cell being edited
   if( 49 <= key && key <= 57 && addingWeight){
     map.lines.get(currLine).setWeight(key - 48); //convert char to int
@@ -90,6 +81,7 @@ void keyPressed(){
   }
 
 
-  if( key == 'c' )
+  if( key == 'c' ){
     map.clear();
+  }
 }
