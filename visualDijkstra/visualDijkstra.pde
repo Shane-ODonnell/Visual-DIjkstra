@@ -7,8 +7,8 @@
   add buttons to reset /clear canvas
   change the way estimates appear on nodes
 
-  animate the shortest path reveal
-  
+  animate the shortest path reveal - done 
+
   disable mouseover color changes during animation
   create a way to reset the sim WITHOUT deleting the existing nodes and lines ( reset all estimates back to infinity)
   buttons for presets / more presets (maybe with lines connecting them)
@@ -20,6 +20,8 @@
   add animation detail where the estimate under analyses is highlighted some way, such as changing font color
   add delays after certain steps to make more important steps stand out 
   shorten the delay that happens while the algo is choosing its next veretex
+
+  STEP BUTTON  button that is control of moving through the algo. each step needs instruction not wait time
 
   ...add more algorythms?
 
