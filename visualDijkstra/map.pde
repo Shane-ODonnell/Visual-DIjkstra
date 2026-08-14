@@ -202,28 +202,14 @@ class Map{
     delay(1000);
   }
 
+  void clear(){
+    //
+    nodes = new ArrayList<Node>();
+    lines = new ArrayList<Line>();
+  
+  
+  
+  }
+
 }
 
-
-
-/*
-  void setStartNode(){
-    int curr = getNode();
-    if(curr != -1){
-      Node currNode = nodes.get(i);
-      currNode.setAsStartNode();
-      nodes.set(i, currNode);
-      startingNode = curr;
-    }
-  }
-
-  void setEndNode(){
-    int curr = getNode();
-    if(curr != -1){
-      Node currNode = nodes.get(i);
-      currNode.setAsEndNode();
-      nodes.set(i, currNode);
-      endNode = curr;
-    }
-  }
-//*/

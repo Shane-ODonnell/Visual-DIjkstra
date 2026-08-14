@@ -89,4 +89,7 @@ void keyPressed(){
     currLine = -1;
   }
 
+
+  if( key == 'c' )
+    map.clear();
 }
