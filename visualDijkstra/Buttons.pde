@@ -106,7 +106,6 @@ Button setStartButton;
 Button setEndButton;
 Button startButton;
 
-
 void setupUI(){
   
   int buttonW = floor(width / 7);
@@ -154,7 +153,6 @@ void typeUI(){
   }
   if( key == 's' || key == 'S' ){
     setStartButton.toggle();
-
   }
   if( key == 'e' || key == 'E' ){
     setEndButton.toggle();

@@ -53,12 +53,12 @@ void mouseClicked() {
     if(lineMode){
       map.addLine();
     }
-    else if(settingStartNode){
+    else if(settingStartNode && !setStartButton.mouseOver()){
       settingStartNode = !map.setStartNode();
       setStartButton.toggle = settingStartNode;
       //turn off the button if we successfully set a start node
     }
-    else if(settingEndNode){
+    else if(settingEndNode  && !setEndButton.mouseOver()){
       settingEndNode = !map.setEndNode();
       setEndButton.toggle = settingEndNode;
     }
