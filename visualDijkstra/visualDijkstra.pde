@@ -1,6 +1,29 @@
 
 //visual Dijkstra
-//TODO maybe remove the map.clear() Function
+/*TODO 
+
+  maybe remove the map.clear() Function
+  stress test presetNodes function (there are bugged edgecases to find)
+  add buttons to reset /clear canvas
+  change the way estimates appear on nodes
+
+  animate the shortest path reveal
+  
+  disable mouseover color changes during animation
+  create a way to reset the sim WITHOUT deleting the existing nodes and lines ( reset all estimates back to infinity)
+  buttons for presets / more presets (maybe with lines connecting them)
+  random nodes, lines and weights for random simulationss
+  try making the canvas green like a classicn blackboard / chalk board and an overall chalk aesthetic
+  change the way textsize and nodesize and line thickness are determined to scale with canvas
+  function to delete lines when clicked (without braking how weights are currently added
+  the default stroke doesnt match the usual storke (line thickness on buttons changes after first click) - fix
+  add animation detail where the estimate under analyses is highlighted some way, such as changing font color
+  add delays after certain steps to make more important steps stand out 
+  shorten the delay that happens while the algo is choosing its next veretex
+
+  ...add more algorythms?
+
+//*/
 
 Map map;
 boolean lineMode = false;

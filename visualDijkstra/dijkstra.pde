@@ -174,33 +174,38 @@ class Dijkstra {
 
             }
         
-            started = !done;
+            //started = !done;
             if(done){
                 currentNode = map.endNode;
                 nodes.get(currentNode).considering = true;
                 int path = nodes.get(currentNode).shortest_path; //shortest path to this node
                 lines.get(path).highlight = true;
-
-                int stop = 2;
-                for(int i = 0; i < stop; i++){
-                    currentNode = getDestination(path);
-                    if(currentNode != map.startingNode){
-                        path = nodes.get(currentNode).shortest_path; //shortest path to this node
-                        lines.get(path).highlight = true;
-                        nodes.get(currentNode).considering = true;
-                
-                    }
-                    else
-                        stop++;              
-                
-                }
-                
-                oneButton('n');
-                map.running = false;
-            
+                nextStep = 6;         
             
             
             }
+        }
+
+        else if ( subStep == 6){
+            //animate the shortest path reveal;
+
+            int path  = nodes.get(currentNode).shortest_path; //shortest path to this node
+
+            currentNode = getDestination(path);
+            if(currentNode != map.startingNode){
+                path = nodes.get(currentNode).shortest_path; //shortest path to this node
+                lines.get(path).highlight = true;
+                nodes.get(currentNode).considering = true;
+                nextStep = 6;
+            }
+            else{
+                started = false;
+                oneButton('n');
+                map.running = false;
+            }
+            
+            
+
         }
 
         return nextStep;
