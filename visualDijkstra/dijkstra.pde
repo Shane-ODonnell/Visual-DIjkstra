@@ -194,6 +194,9 @@ class Dijkstra {
                         stop++;              
                 
                 }
+                
+                oneButton('n');
+                map.running = false;
             
             
             

@@ -1,6 +1,6 @@
 
 //visual Dijkstra
-//TODO 
+//TODO maybe remove the map.clear() Function
 
 Map map;
 boolean lineMode = false;
@@ -18,6 +18,13 @@ void setup(){
   
   map = new Map();
   textSize(30);
+
+  lineMode = false;
+  addingWeight = false;
+  settingStartNode = false;
+  settingEndNode = false;
+  started = false;
+  currLine = -1;
 
   setupUI();
 
@@ -81,6 +88,7 @@ void keyPressed(){
 
     if( key == 'c'){
       map.clear();
+      setup();
     }
   }
 }
