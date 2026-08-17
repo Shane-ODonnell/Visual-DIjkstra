@@ -13,7 +13,7 @@
 
   buttons for presets / more presets (maybe with lines connecting them)
   random nodes, lines and weights for random simulationss
-  try making the canvas green like a classicn blackboard / chalk board and an overall chalk aesthetic
+  try making the canvas green like a classicn blackboard / chalk board and an overall chalk aesthetic -done, meh
   change the way textsize and nodesize and line thickness are determined to scale with canvas
   function to delete lines when clicked (without braking how weights are currently added
   the default stroke doesnt match the usual storke (line thickness on buttons changes after first click) - fix
@@ -38,9 +38,12 @@ int currLine = -1;
 
 int upperLimit;
 
+color canvas = #191919;  //canvas color
+color uiBar = #C8C8C8;
+
 void setup(){
   size(500,500);
-  background(25);
+  background(canvas);
   
   map = new Map();
   textSize(30);
@@ -57,8 +60,9 @@ void setup(){
 }
 
 void draw(){
-  background(25);
-  fill(200);
+  background(canvas);
+  
+  fill(uiBar);
   rect(0, upperLimit, width , height - upperLimit);
 
   map.show();
