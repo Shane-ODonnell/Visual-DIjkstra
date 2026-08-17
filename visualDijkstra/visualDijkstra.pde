@@ -9,7 +9,8 @@
 
   animate the shortest path reveal - done 
 
-  disable mouseover color changes during animation
+  disable mouseover color changes during animation -done  
+
   create a way to reset the sim WITHOUT deleting the existing nodes and lines ( reset all estimates back to infinity)
   buttons for presets / more presets (maybe with lines connecting them)
   random nodes, lines and weights for random simulationss
