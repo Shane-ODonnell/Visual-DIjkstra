@@ -181,6 +181,7 @@ class Dijkstra {
                 int path = nodes.get(currentNode).shortest_path; //shortest path to this node
                 lines.get(path).highlight = true;
                 nextStep = 6;         
+                currentNode = map.endNode;
                 delay(500);
             
             }
@@ -188,7 +189,6 @@ class Dijkstra {
 
         else if ( subStep == 6){
             //animate the shortest path reveal;
-
             int path  = nodes.get(currentNode).shortest_path; //shortest path to this node
 
             currentNode = getDestination(path);
