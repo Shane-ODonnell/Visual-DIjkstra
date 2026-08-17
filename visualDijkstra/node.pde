@@ -32,7 +32,7 @@ class Node{
     stroke(0);
     strokeWeight(2);  // Default
 
-    if(mouseOver())
+    if(mouseOver() && !started)
       stroke(255);
     if(considering)
       stroke(color(250, 190, 0));
@@ -107,7 +107,7 @@ class Line{
       stroke(color(255,190,0));
       fill(0);
     }
-    else if(mouseOver()){
+    else if(mouseOver()  && !started){
       //
       stroke(200);
       fill(0);

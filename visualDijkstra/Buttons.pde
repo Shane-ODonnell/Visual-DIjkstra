@@ -35,7 +35,7 @@ class Button {
   void show() {
 
     fill(colour);
-    if(mouseOver()){
+    if(mouseOver() && !started){
       fill(color(170,100,255));   
     }
     stroke(0);
