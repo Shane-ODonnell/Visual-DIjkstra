@@ -119,8 +119,7 @@ class Map{
   }
 
   boolean mouseOver(){
-    int count = nodes.size();
-    for(int i = 0; i < count; i++){
+    for(int i = 0; i < nodes.size(); i++){
       if(nodes.get(i).mouseOver())
         return true;
     }
@@ -229,7 +228,26 @@ class Map{
   
   }
 
+  void reset(){
+    subStep = 1;
+    int max = nodes.size();
+    if( lines.size() > max){
+      max = lines.size();
+    } // if there are more lines than nodes, use that as max
 
-
+    for(int i = 0; i < max; i++){ //using this 'max' operator and the if statements saves me using two seperate for loops
+      //
+      if( i < nodes.size() ) {         //dont work on the nodes array if we are out of its bounds
+        
+        nodes.get(i).shortestPathValue = 10000;
+        nodes.get(i).shortest_path = -1;
+        if(nodes.get(i).startingNode){
+          nodes.get(i).setAsStartNode();
+        }
+        nodes.get(i).explored = false;
+      }
+      if( i < lines.size() )          //dont work on the lines array if we are out of its bounds
+        lines.get(i).highlight = false;
+    }
+  }
 }
-

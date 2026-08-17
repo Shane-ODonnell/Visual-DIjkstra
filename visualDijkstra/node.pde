@@ -8,7 +8,6 @@ class Node{
   boolean considering = false;
   boolean explored = false;
 
-  int prevNodeInPath = -1;
   int shortestPathValue = 10000; //infinity till made shorter
   int shortest_path;
   
