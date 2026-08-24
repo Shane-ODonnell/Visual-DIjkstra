@@ -3,14 +3,15 @@
 /*TODO 
 
   stress test presetNodes function (there are bugged edgecases to find) - found and fixed
-  add buttons to reset /clear canvas
+  add buttons to reset /clear canvas       - done
   change the way estimates appear on nodes
 
   animate the shortest path reveal - done 
   disable mouseover color changes during animation -done  
   create a way to reset the sim WITHOUT deleting the existing nodes and lines ( reset all estimates back to infinity) - done 
 
-  buttons for presets / more presets (maybe with lines connecting them)
+  add button to reduce delays / fast forward / step thru program
+  buttons for presets / more presets (maybe with lines connecting them) - wip
   random nodes, lines and weights for random simulationss
   try making the canvas green like a classicn blackboard / chalk board and an overall chalk aesthetic -done, meh
   change the way textsize and nodesize and line thickness are determined to scale with canvas
@@ -36,6 +37,7 @@ boolean started = false;
 int currLine = -1;
 
 int upperLimit;
+int defaultTextSize = 30;
 
 color canvas = #191919;  //canvas color
 color uiBar = #C8C8C8;
@@ -45,7 +47,7 @@ void setup(){
   background(canvas);
   
   map = new Map();
-  textSize(30);
+  textSize(defaultTextSize);
 
   lineMode = false;
   addingWeight = false;

@@ -2,6 +2,7 @@
 class Node{
   int x,y;
   int radius = 65;
+  int txtSize = defaultTextSize + 5;
 
   boolean startingNode = false;
   boolean endNode = false;
@@ -24,6 +25,7 @@ class Node{
   
   void show(int val){
     fill(fill);
+
     if(startingNode)
       fill(color(150,30,30));
     else if (endNode)
@@ -41,7 +43,7 @@ class Node{
     textAlign(CENTER, CENTER);
     val++;
 
-    textSize(35);
+    textSize(txtSize);
     int yMargin = 15;
     text(val, x, y - yMargin);
 
@@ -49,7 +51,8 @@ class Node{
       text('∞', x, y + yMargin);
     else
       text(shortestPathValue, x, y + yMargin);
-     textSize(30);
+    
+    textSize(defaultTextSize);
   }
   
   boolean mouseOver(){
@@ -89,6 +92,7 @@ class Line{
   int node1, node2;
   PVector n1, n2;
   int weight = 0;
+  int txtSize = floor(width / 25 );
   
   boolean highlight;
 
@@ -121,23 +125,10 @@ class Line{
     int space = 50;
     float margin = 0.5;
 
-    /*
-      if(-margin < slope && slope < margin){
-        //directly above @ m = 0 
-        space = floor(space/2);
-        yMid = yMid - space;
-      }else if(slope < 0){
-        //diplay Length to the right
-        space = space + 5;
-        xMid = xMid + space;
-      } else if (slope > 0){
-        //display L to the left
-        xMid = xMid - space;
-      } 
-    //*/
-
-    if(weight != 0)
+    if(weight != 0){
+      textSize(txtSize);
       text(weight, xMid, yMid); 
+    }
 
   }
 

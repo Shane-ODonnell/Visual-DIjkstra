@@ -49,7 +49,7 @@ class Button {
     textSize(txtSize);
     textAlign(CENTER, CENTER);
     text(name, x + floor(w/2), y + floor(w/2));
-  
+    textSize(defaultTextSize);
   }
 
   boolean mouseOver() {
@@ -101,22 +101,32 @@ class Button {
 
 }
 
+//toggle buttons
 Button addLineButton;
 Button setStartButton;
 Button setEndButton;
 Button startButton;
 
+//instant buttons
+Button resetButton, clearButton, presetButton, randomButton;
+
 void setupUI(){
   
-  int buttonW = floor(width / 7);
+  int buttonW = floor(width / 10);
   int bufferSpace = floor(buttonW/3);
   upperLimit = height - (2*bufferSpace + buttonW);
+  int buttonY = height - bufferSpace;
 
-  addLineButton = new Button( bufferSpace, height - bufferSpace , buttonW, "Lines" );
-  setStartButton = new Button( 2*bufferSpace + buttonW, height - bufferSpace , buttonW, "Set Start" );
-  setEndButton = new Button( 3*bufferSpace + 2*buttonW, height - bufferSpace , buttonW, "Set End" );
-  startButton = new Button( 4*bufferSpace + 3*buttonW, height - bufferSpace , buttonW, "Start" );
+  addLineButton = new Button( bufferSpace, buttonY , buttonW, "Lines" );
+  setStartButton = new Button( 2*bufferSpace + buttonW, buttonY , buttonW, "Set Start" );
+  setEndButton = new Button( 3*bufferSpace + 2 *buttonW, buttonY , buttonW, "Set End" );
+  startButton = new Button( 4*bufferSpace + 3 *buttonW, buttonY , buttonW, "Start" );
 
+  resetButton = new Button( 5 * bufferSpace + 4 * buttonW, buttonY , buttonW, "Reset" );
+  clearButton = new Button( 6 * bufferSpace + 5 * buttonW, buttonY , buttonW, "Clear" );
+  presetButton = new Button( 7 * bufferSpace + 6 * buttonW, buttonY , buttonW, ": :" );
+  presetButton.setTextSize(defaultTextSize + 20);
+  //randomButton = new Button( 8 * bufferSpace + 7 * buttonW, buttonY , buttonW, "Reset" );
 }
 
 void showUI(){
@@ -125,6 +135,11 @@ void showUI(){
   setStartButton.show();
   setEndButton.show();
   startButton.show();
+
+  resetButton.show();
+  clearButton.show();
+  presetButton.show();
+  //randomButton.show();
 
 }
 
@@ -143,6 +158,18 @@ void clickUI(){
   addLineButton.click();
   setStartButton.click();
   setEndButton.click();
+
+  if(resetButton.mouseOver()){
+    map.reset();
+  }
+
+  if(clearButton.mouseOver()){
+    map.clear();
+  }
+
+  if(presetButton.mouseOver()){
+    map.presetNodes();
+  }  
 
 }
 
