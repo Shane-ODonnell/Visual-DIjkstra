@@ -2,8 +2,7 @@
 //visual Dijkstra
 /*TODO 
 
-  maybe remove the map.clear() Function
-  stress test presetNodes function (there are bugged edgecases to find)
+  stress test presetNodes function (there are bugged edgecases to find) - found and fixed
   add buttons to reset /clear canvas
   change the way estimates appear on nodes
 

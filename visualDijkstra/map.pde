@@ -13,6 +13,8 @@ class Map{
   int startingNode = -1;
   int endNode = -1;
 
+  boolean adding_preset = false;
+
   Map(){
     w = width;
     h = height;
@@ -21,8 +23,8 @@ class Map{
   }
   
   void addNode(int x, int y){
-    int n = getNode();
-    if( n != -1){
+    int n = getNode();       // return -1 or the node currently under the mouse curser
+    if( n != -1 && !adding_preset){
       nodes.remove(n);
       //remove any lines connected to this node
       for(int i = 0; i < lines.size(); i++){
@@ -214,17 +216,19 @@ class Map{
 
   void presetNodes(){
     //
-    clear();
+    clear(); //delete all lines and nodes currently on the board
     int halfX = floor(width / 2);  
     int x = halfX / 2;
     int h = upperLimit;
     int halfY = floor(h/2);
     int y = halfY/2;
 
+    adding_preset = true; // this tells the addNode function to skip the mouseposition check since we dont want to be removing nodes rn
     addNode( x, y);
     addNode( x + halfX, y);
     addNode( x, y + halfY);
     addNode( x + halfX, y + halfY);
+    adding_preset = false;
   
   }
 
