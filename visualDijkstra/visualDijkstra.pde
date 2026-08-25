@@ -9,7 +9,7 @@
   create a way to reset the sim WITHOUT deleting the existing nodes and lines ( reset all estimates back to infinity) - done 
   try making the canvas green like a classicn blackboard / chalk board and an overall chalk aesthetic -done, meh
   the default stroke doesnt match the usual storke (line thickness on buttons changes after first click) - fix - done 
-  brighten the canvas color so that the node stroke stands out more
+  brighten the canvas color so that the node stroke stands out more  - done
 
   change the way estimates appear on nodes
 
@@ -41,7 +41,7 @@ int currLine = -1;
 int upperLimit;
 int defaultTextSize = 30;
 
-color canvas = #191919;  //canvas color
+color canvas = #303030;  //canvas color   //originally it was 19, may drop it down to 25
 color uiBar = #C8C8C8;
 
 void setup(){

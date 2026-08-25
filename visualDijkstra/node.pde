@@ -112,7 +112,7 @@ class Line{
     }
     else if(mouseOver()  && !started){
       //
-      stroke(200);
+      stroke(255);
       fill(0);
     }
     //
