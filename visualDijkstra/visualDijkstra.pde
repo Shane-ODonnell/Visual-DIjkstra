@@ -4,16 +4,17 @@
 
   stress test presetNodes function (there are bugged edgecases to find) - found and fixed
   add buttons to reset /clear canvas       - done
-  change the way estimates appear on nodes
-
   animate the shortest path reveal - done 
   disable mouseover color changes during animation -done  
   create a way to reset the sim WITHOUT deleting the existing nodes and lines ( reset all estimates back to infinity) - done 
+  try making the canvas green like a classicn blackboard / chalk board and an overall chalk aesthetic -done, meh
+
+  change the way estimates appear on nodes
 
   add button to reduce delays / fast forward / step thru program
   buttons for presets / more presets (maybe with lines connecting them) - wip
   random nodes, lines and weights for random simulationss
-  try making the canvas green like a classicn blackboard / chalk board and an overall chalk aesthetic -done, meh
+
   change the way textsize and nodesize and line thickness are determined to scale with canvas
   function to delete lines when clicked (without braking how weights are currently added
   the default stroke doesnt match the usual storke (line thickness on buttons changes after first click) - fix
