@@ -8,6 +8,8 @@
   disable mouseover color changes during animation -done  
   create a way to reset the sim WITHOUT deleting the existing nodes and lines ( reset all estimates back to infinity) - done 
   try making the canvas green like a classicn blackboard / chalk board and an overall chalk aesthetic -done, meh
+  the default stroke doesnt match the usual storke (line thickness on buttons changes after first click) - fix - done 
+  brighten the canvas color so that the node stroke stands out more
 
   change the way estimates appear on nodes
 
@@ -17,7 +19,6 @@
 
   change the way textsize and nodesize and line thickness are determined to scale with canvas
   function to delete lines when clicked (without braking how weights are currently added
-  the default stroke doesnt match the usual storke (line thickness on buttons changes after first click) - fix
   add animation detail where the estimate under analyses is highlighted some way, such as changing font color
 
   add delays after certain steps to make more important steps stand out - wip
