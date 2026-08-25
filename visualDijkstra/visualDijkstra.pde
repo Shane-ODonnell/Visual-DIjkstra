@@ -129,5 +129,8 @@ void keyPressed(){
     if( key == 'r'){
       map.reset();
     }
+    if( key == 't'){
+      map.testCase();
+    }
   }
 }

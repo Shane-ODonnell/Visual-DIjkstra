@@ -254,4 +254,46 @@ class Map{
         lines.get(i).highlight = false;
     }
   }
+
+  void testCase(){
+    presetNodes(); // clear board and add 4 nodes in square pattern
+    int node1 = 0; 
+    int node2 = 1;
+
+    int shortVal = 2; //this preset has a pretty straightforward normal path 
+    int longVal = 8;  //and a path that is fewer lines but greater weight
+
+    while(node2 < nodes.size()){
+      
+      lines.add(new Line(node1,node2));
+      lines.get(lines.size()-1)
+        .setNodes(nodes.get(node1).position(), nodes.get(node2).position());
+
+      lines.get(lines.size()-1).setWeight(shortVal);
+      node1++;
+      node2++;
+    } // this loop connects all the nodes in a zig zag pattern with weight 2
+
+    node1 = 1; 
+    node2 = 3;
+    nodes.get(0).setAsStartNode();
+    startingNode = 0;
+    endNode = node2;
+    nodes.get(node2).setAsEndNode();
+
+    //set the starting and end nodes before adding decoy paths
+    
+    for(int i = 0; i != 2; i++){
+      //
+      lines.add(new Line(node1,node2));
+      lines.get(lines.size()-1)
+        .setNodes(nodes.get(node1).position(), nodes.get(node2).position());
+      lines.get(lines.size()-1).setWeight(longVal);
+      if(longVal != 9)
+        longVal++;
+      node1--;
+      node2--;
+    }
+
+  }
 }
