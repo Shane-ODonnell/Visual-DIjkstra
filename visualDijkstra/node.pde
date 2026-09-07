@@ -134,9 +134,7 @@ class Line{
     float slope = getSlope();     // using the slope of this line
     int xMid = floor((n2.x + n1.x) / 2 );
     int yMid = floor((n2.y + n1.y) / 2 ); //get the x and y midpoint of the line
-    int space = 50;     //redundant variable
-    float margin = 0.5; //redundant variable
-
+    
     if(weight != 0){            //if the line has been assigned a weight
       textSize(txtSize);
       text(weight, xMid, yMid); //display it at the centre of the line 
