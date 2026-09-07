@@ -26,6 +26,7 @@ class Map{
     int n = getNode();       // return -1 or the node currently under the mouse curser
     if( n != -1 && !adding_preset){
       nodes.remove(n);
+      reset(); //if the map changes then the shortest path highlight should be removed
       //remove any lines connected to this node
       for(int i = 0; i < lines.size(); i++){
         Line curr = lines.get(i);
@@ -55,8 +56,10 @@ class Map{
       }
     }
     else{
-      if( y + floor(radius/2) < upperLimit)
+      if( y + floor(radius/2) < upperLimit){
         nodes.add(new Node(x,y));
+        reset(); //if the map changes then the shortest path highlight should be removed
+      }
     }
   }
   

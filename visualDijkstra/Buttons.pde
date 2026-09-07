@@ -213,8 +213,10 @@ void startButtonFunction(){
     started = startButton.toggle;
     oneButton('g');
     map.startDijkstra();
-    if(map.running)
+    if(map.running){
+      map.reset();  //make sure all nodes are unexplored so simulation can run properly
       started = true;
+    }
     else 
       oneButton('n');
   }
