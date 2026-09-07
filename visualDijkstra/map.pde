@@ -242,13 +242,14 @@ class Map{
     for(int i = 0; i < max; i++){ //using this 'max' operator and the if statements saves me using two seperate for loops
       //
       if( i < nodes.size() ) {         //dont work on the nodes array if we are out of its bounds
-        
+        //TODO this can be a node member function rather than saying get(i) repeatedly.
         nodes.get(i).shortestPathValue = 10000;
         nodes.get(i).shortest_path = -1;
         if(nodes.get(i).startingNode){
           nodes.get(i).setAsStartNode();
         }
         nodes.get(i).explored = false;
+        nodes.get(i).considering = false;
       }
       if( i < lines.size() )          //dont work on the lines array if we are out of its bounds
         lines.get(i).highlight = false;

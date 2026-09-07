@@ -26,6 +26,8 @@
 
   STEP BUTTON  button that is control of moving through the algo. each step needs instruction not wait time
 
+  add feature that runs reset() automatically if start is pressed and the board hasnt been reset yet
+
   ...add more algorythms?
 
 //*/
