@@ -24,21 +24,27 @@ class Node{
   }
   
   void show(int val){
+    //first pick the right fill color for this node
+    //default
     fill(fill);
 
     if(startingNode)
-      fill(color(150,30,30));
+      fill(color(150,30,30));//start node highlighted red
     else if (endNode)
-      fill(color(30,150,30));
-    stroke(0);
-    strokeWeight(2);  // Default
+      fill(color(30,150,30));//end node highlighted green
 
-    if(mouseOver() && !started)
-      stroke(255);
-    if(considering)
-      stroke(color(250, 190, 0));
+    //(node) outline color and width
+    stroke(0);
+    strokeWeight(2);  // Default width 2, color is black (0)
+
+    if(mouseOver() && !started)   //if the mouse is above this node, and the algo isnt currently running
+      stroke(255);                //make the outline white(255) as visual feedback. 
+    if(considering)             
+      stroke(color(250, 190, 0)); //if the algorythm is currently considering this node, make outline gold
     
-    circle(x, y, radius);
+    circle(x, y, radius); //draw the node with chosen details
+    
+    // display the text on the node in white 
     fill(255);
     textAlign(CENTER, CENTER);
     val++;
@@ -56,16 +62,23 @@ class Node{
   }
   
   boolean mouseOver(){
+
+    //distance measure between node and mouse coords
+    
     int distX = (mouseX - x);
     int distY = (mouseY - y);
-    
+
+    //if the value is below 0, flip sign
+
     if(distX < 0)
       distX = distX * -1;
     if(distY < 0)
       distY = distY * -1;
+    
+    // if the distance from node centre to mouse is less than the radius 
 
     if ( distX <= radius && distY <= radius){
-      return true;
+      return true;  //then the mouse must be above this node
     }
     
     return false;
