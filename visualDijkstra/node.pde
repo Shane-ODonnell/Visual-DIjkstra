@@ -17,7 +17,7 @@ class Node{
   Node(int X, int Y){
     x = X;
     y = Y;
-  }
+  } // constructor
 
   int getRadius(){
     return radius;
@@ -102,47 +102,46 @@ class Node{
 }
 
 class Line{
-  int node1, node2;
-  PVector n1, n2;
-  int weight = 0;
+  int node1, node2; //index of the connected nodes in the map's "nodes" arraylist
+  PVector n1, n2;   //the x and y postion of the connected nodes
+  int weight = 0;   //the value / weight / time assigned to this node
   int txtSize = floor(width / 25 );
   
-  boolean highlight;
+  boolean highlight;//is this line supposed to be highlighed
 
   Line(int n1, int n2){
     node1 = n1;
     node2 = n2;
-  }
+  } // constructor
 
   void show(){
+    //default color of the text and the line ( white and dark grey)
     fill(255);
     stroke(100);
-    strokeWeight(16);  // Thicker
+    strokeWeight(16);  // Thick line
 
-    if(highlight){
-      stroke(color(255,190,0));
-      fill(0);
+    if(highlight){     //if the line is being highlighted by the algorythm
+      stroke(color(255,190,0)); //gold line
+      fill(0);                  //black text
     }
-    else if(mouseOver()  && !started){
-      //
-      stroke(255);
-      fill(0);
+    else if(mouseOver()  && !started){  //if the mouse is above this line, and the algo isnt currently running
+      stroke(255); //white line
+      fill(0);     //black text 
     }
-    //
 
-    line(n1.x, n1.y, n2.x, n2.y);
+    line(n1.x, n1.y, n2.x, n2.y); //draw line connecting the centre of the two nodes
 
-    float slope = getSlope();
+    float slope = getSlope();     // using the slope of this line
     int xMid = floor((n2.x + n1.x) / 2 );
-    int yMid = floor((n2.y + n1.y) / 2 );
-    int space = 50;
-    float margin = 0.5;
+    int yMid = floor((n2.y + n1.y) / 2 ); //get the x and y midpoint of the line
+    int space = 50;     //redundant variable
+    float margin = 0.5; //redundant variable
 
-    if(weight != 0){
+    if(weight != 0){            //if the line has been assigned a weight
       textSize(txtSize);
-      text(weight, xMid, yMid); 
+      text(weight, xMid, yMid); //display it at the centre of the line 
     }
-
+    //close show
   }
 
   int getDist(){
