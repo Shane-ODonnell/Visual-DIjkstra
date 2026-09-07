@@ -111,7 +111,7 @@ class Line{
 
   Line(int n1, int n2){
     node1 = n1;
-    node2 = n2;
+    node2 = n2;//could just call updateIndex()
   } // constructor
 
   void show(){
@@ -147,21 +147,22 @@ class Line{
 
     int dist = floor( displacement );
 
-    return dist;
+    return dist;  //never used. seemingly calculates the length of the line
   }
 
   float getSlope(){
     float m = ( n2.y - n1.y ) / ( n2.x - n1.x );
     
     return m;
-  }
+  }//calculates and returns the slope of the line
   
   void setNodes(PVector NODE1, PVector NODE2){
     n1 = NODE1;
     n2 = NODE2;
-  }
+  }//assign the x and y positions of the nodes
 
   void updateIndex(int newNode1, int newNode2){
+    //if nodes are deleted from map, the indexes of the existing nodes may change
     node1 = newNode1;
     node2 = newNode2;
   }
@@ -193,9 +194,9 @@ class Line{
   }
 
   void setWeight(int w){
-
+    //function called in map when weight is being assigned
     weight = w;
-    if(9 < weight)
+    if(9 < weight)  //cap the weights at 9
       weight = 0;
     println("Line weight set to: " + weight);
   }
