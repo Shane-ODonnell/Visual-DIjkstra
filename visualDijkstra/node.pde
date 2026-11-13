@@ -51,7 +51,14 @@ class Node{
 
     textSize(txtSize);
     int yMargin = 15;
-    text(val, x, y - yMargin);
+    
+    // convert num 1 to ascii A
+    text(char(val + 64), x, y - yMargin);
+
+    /*    //might have weight highlighted gold to focus attention more
+    if(considering)             
+      fill(color(250, 190, 0));
+    //*/
 
     if( shortestPathValue >= 1000)
       text('∞', x, y + yMargin);
